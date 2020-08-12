@@ -1,3 +1,6 @@
 <div id="systempowers" class="tab-pane fade">
-    {{{ansi-format text=char.custom.powers}}}
+{{#each char.powers as |power|}}
+<p><b>{{power.name}}</b></p>
+<p>{{{ansi-format text=power.desc}}}</p>
+{{/each}}
 </div>

@@ -1,0 +1,9 @@
+ <p class="cg-tip">Enter your character's powers.</p>
+
+     {{#each model.char.powers as |power|}}
+     <b>{{input type="text" value=power.name size=25}}</b> 
+     <button class="btn btn-default" {{action 'removePower' power.name}}><i class="fa fa-trash" aria-label="Remove Power"></i></button>
+     {{textarea value=power.desc cols="80" rows=5}} 
+     {{/each}}
+
+     <button class="btn btn-default" id="addpower" {{action 'addPower'}}>Add Power</button>
