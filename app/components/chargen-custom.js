@@ -9,27 +9,9 @@ export default Component.extend({
   },
   
   onUpdate: function() {
-    let extras = this.get('model.app.game.extra_plugins');
-    if (!extras.any(e => e === 'powers')) {
-      return {};
-    }
-
-    let data = {};
-    this.get('model.char.powers').filter(t => t.name && t.name.length > 0)
-       .forEach(t => data[t.name] = t.desc);
-    return data;
-  },
-    
-  actions: { 
-      addPower() {
-        this.get('model.char.powers').pushObject(EmberObject.create( {name: "Power Name", desc: "Enter a Description"} ));
-      },
-      removePower(name) {
-        let found = this.get('model.char.powers').find(t => t.name === name);
-        if (found) {
-          this.get('model.char.powers').removeObject(found);  
-        }
-      }
-  
+    // Return a hash containing your data.  Character data will be in 'char'.  For example:
+    // 
+    // return { goals: this.get('char.custom.goals') };
+    return { powers: this.get('char.custom.powers'), skills: this.get('char.custom.skills'), advantages: this.get('char.custom.advantages'), flaws: this.get('char.custom.flaws')};
   }
 });
